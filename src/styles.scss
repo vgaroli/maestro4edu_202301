@@ -1,1 +1,311 @@
+@use '@angular/material' as mat;
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$maestro4edu_202301-primary: mat.define-palette(mat.$indigo-palette);
+$maestro4edu_202301-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$maestro4edu_202301-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$maestro4edu_202301-theme: mat.define-light-theme((
+  color: (
+    primary: $maestro4edu_202301-primary,
+    accent: $maestro4edu_202301-accent,
+    warn: $maestro4edu_202301-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($maestro4edu_202301-theme);
+
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+// Plus imports for other components in your app.
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
+//  The following line adds:
+//    1. Default typography styles for all components
+//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
+//  If you specify typography styles for the components you use elsewhere, you should delete this line.
+//  If you don't need the default component typographies but still want the hierarchy styles,
+//  you can delete this line and instead use:
+//    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
+@include mat.all-legacy-component-typographies();
+@include mat.legacy-core();
+
+// .ck-editor__editable_inline {
+//     height: 300px;
+//     overflow-y: scroll;
+// }
+
+$md-secondary: (
+    50 : #f2eae3,
+    100 : #ddcab9,
+    200 : #c7a78a,
+    300 : #b1845b,
+    400 : #a06938,
+    500 : #8f4f15,
+    600 : #874812,
+    700 : #7c3f0f,
+    800 : #72360c,
+    900 : #602606,
+    A100 : #ffb191,
+    A200 : #ff8d5e,
+    A400 : #ff692b,
+    A700 : #ff5712,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-primary: (
+    50 : #fef4e0,
+    100 : #fde4b3,
+    200 : #fbd380,
+    300 : #f9c14d,
+    400 : #f8b326,
+    500 : #f7a600,
+    600 : #f69e00,
+    700 : #f59500,
+    800 : #f38b00,
+    900 : #f17b00,
+    A100 : #ffffff,
+    A200 : #fff1e5,
+    A400 : #ffd5b2,
+    A700 : #ffc798,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-accent: (
+    50 : #fdeee1,
+    100 : #fad4b4,
+    200 : #f6b882,
+    300 : #f29b4f,
+    400 : #f0852a,
+    500 : #ed7004,
+    600 : #eb6803,
+    700 : #e85d03,
+    800 : #e55302,
+    900 : #e04101,
+    A100 : #ffffff,
+    A200 : #ffded4,
+    A400 : #ffb6a1,
+    A700 : #ffa288,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-warn: (
+    50 : #f9e0e0,
+    100 : #f0b3b3,
+    200 : #e68080,
+    300 : #db4d4d,
+    400 : #d42626,
+    500 : #cc0000,
+    600 : #c70000,
+    700 : #c00000,
+    800 : #b90000,
+    900 : #ad0000,
+    A100 : #ffd7d7,
+    A200 : #ffa4a4,
+    A400 : #ff7171,
+    A700 : #ff5858,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-basic: (
+    50 : #ffffff,
+    100 : #ffffff,
+    200 : #ffffff,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-green: (
+    50 : #eef6e8,
+    100 : #d4e9c6,
+    200 : #b7daa0,
+    300 : #9acb7a,
+    400 : #84c05e,
+    500 : #6eb541,
+    600 : #66ae3b,
+    700 : #5ba532,
+    800 : #519d2a,
+    900 : #3f8d1c,
+    A100 : #d6ffc7,
+    A200 : #b2ff94,
+    A400 : #8dff61,
+    A700 : #7aff47,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+
+$maestro4edu-primary:mat.define-palette($md-primary);
+$maestro4edu-secondary:mat.define-palette($md-secondary);
+$maestro4edu-accent: mat.define-palette($md-accent);
+
+// The warn palette is optional (defaults to red).
+$maestro4edu-warn: mat.define-palette($md-warn);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$maestro4edu-theme: mat.define-light-theme((
+  color: (
+    primary: $maestro4edu-primary,
+    accent: $maestro4edu-accent,
+    warn: $maestro4edu-warn,
+    secondary: $maestro4edu-secondary,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-legacy-component-themes($maestro4edu-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.divCenter1200 {
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 15px;
+  }
+
+  .divCenter800 {
+    max-width: 800px;
+    margin: auto;
+    margin-top: 15px;
+  }
+
+  .divCenter300 {
+    max-width: 300px;
+    margin-left: 40%;
+  }
+
+  .divCenter1000 {
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 15px;
+  }

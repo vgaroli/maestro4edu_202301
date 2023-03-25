@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "edu21-beta": {
+      "hosting": {
+        "maestro4edu_202301": [
+          "edu21-beta"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "edu21-beta"
+  }
+}
