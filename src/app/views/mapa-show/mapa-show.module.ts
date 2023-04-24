@@ -8,6 +8,7 @@ import { MapItemListComponent } from '../../components/map-item-list/map-item-li
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MapaListComponent } from '../../components/mapa-list/mapa-list.component';
 import { MapaItemComponent } from '../../components/mapa-item/mapa-item.component';
+import { MapaIdComponent } from '../../components/mapa-id/mapa-id.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { MapaItemComponent } from '../../components/mapa-item/mapa-item.componen
     MapItemListComponent,
     MapaListComponent,
     MapaItemComponent,
+    MapaIdComponent,
   ],
   imports: [
     CommonModule,

@@ -116,7 +116,6 @@ export class PrincipalService {
                 where('conta', "==", this.conta))
             ).pipe(first()).subscribe(contas => {
               let conta = contas[0]
-              console.log(conta)
               if (conta) {
                 this.idGoogle = conta.idGoogle
                 if (conta.idGeekie) {
@@ -126,7 +125,6 @@ export class PrincipalService {
                   this.idCurso = conta.idCurso
                 }
                 this.escola = conta.escola
-                console.log(conta.pessoa.path)
                 docData<Pessoa>(doc(this.firestore, 'pessoas', conta.pessoa.path.split('/')[1]) as DocumentReference<Pessoa>)
                   .pipe(take(1)).subscribe(pessoa => {
 

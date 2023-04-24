@@ -1,6 +1,7 @@
 import { Time } from '@angular/common';
 import { DocumentReference, Timestamp } from '@angular/fire/firestore';
- 
+import { ItemMapa } from './mapa.model';
+
 export interface Escola {
   id?: string
   razaoSocial: string
@@ -49,12 +50,13 @@ export interface Grade{
   itensMapa: ItemMapa[]
 }
 
-export interface ItemMapa{
-  colecao: string
-  estilo?: string
-  campoId?: string
-  chaveCabecalho?: string
-}
+// export interface ItemMapa{
+//   colecao: string
+//   estilo?: string
+//   campoId?: string
+//   ordem?: string
+//   chaveCabecalho?: string
+// }
 
 export interface SalaGrade{
   curso: string
@@ -136,7 +138,7 @@ export interface DadosChamada{
   idDocenteHorario: string
   dataHoraRegistro?: Timestamp
   ausentes: string //AlunoSalaChamadaList[]
-  programada:boolean  
+  programada:boolean
   style?: string
 }
 

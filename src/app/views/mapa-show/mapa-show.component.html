@@ -6,7 +6,8 @@
   </div>
   <div id="dados-aluno">
     <ng-container *ngFor="let aluno of alunos">
-      <app-mapa-list [idGoogle]="aluno.idGoogle" [idGrade]="aluno.idGrade"></app-mapa-list>
+      <app-mapa-id></app-mapa-id>
+      <app-mapa-list [idCurso]="aluno.idCurso" [idGoogle]="aluno.idGoogle" [idGrade]="aluno.idGrade"></app-mapa-list>
     </ng-container>
   </div>
 </div>

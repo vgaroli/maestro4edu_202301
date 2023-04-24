@@ -54,7 +54,6 @@ export class AppComponent {
   }
 
   loadCredential(){
-    //console.log("entrando credencial")
     if (this.principal.isLinkLogin()) {
       let email = window.localStorage.getItem("emailLink")
       if (!email) {

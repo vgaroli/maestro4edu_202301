@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { ItemMapa } from 'src/app/models/escola.model';
+import { ItemMapa } from 'src/app/models/mapa.model';
 import { MapaListService } from 'src/app/services/mapa-list.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { MapaListService } from 'src/app/services/mapa-list.service';
 export class MapaListComponent implements OnInit {
   @Input() idGoogle: string = ""
   @Input() idGrade: string = ""
+  @Input() idCurso: string = ""
   @Input() colecao: string = ""
   itens: ItemMapa[] = []
   constructor(private mapaService: MapaListService, private changeDetection: ChangeDetectorRef) { }

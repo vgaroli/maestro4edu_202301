@@ -5,7 +5,7 @@ import { collectionData, docData } from 'rxfire/firestore';
 import { Observable } from 'rxjs';
 import { Grade } from '../models/escola.model';
 import { PrincipalService } from './principal.service';
-import { Cabecalho } from '../models/mapa.model';
+import { Cabecalho, ItemMapa } from '../models/mapa.model';
 
 
 @Injectable({
@@ -17,7 +17,6 @@ export class MapaListService {
 
   getListGrade(idGrade: string):Observable<Grade>{
     let colecao: string = `escolas/${this.principal.escola}/anosLetivos/${this.principal.anoLetivo}/grades`
-    console.log("Lendo: " + idGrade)
     return docData<Grade>(doc(this.firestore, colecao, idGrade) as DocumentReference<Grade>)
   }
 
@@ -26,5 +25,15 @@ export class MapaListService {
     let collectionHeader = collection + "Cabecalhos"
     let path = `escolas/${this.principal.escola}/anosLetivos/${this.principal.anoLetivo}/${collectionHeader}`
     return docData<Cabecalho>(doc(this.firestore, path, idHeader) as DocumentReference<Cabecalho>)
+  }
+
+  loadDataItem(dataCollection: string, idField: string, idValue: string, ordem: string):Observable<ItemMapa[]>{
+    let colecao: string = `escolas/${this.principal.escola}/anosLetivos/${this.principal.anoLetivo}/${dataCollection}`
+    return collectionData(
+      query<ItemMapa>(
+        collection(this.firestore, colecao) as CollectionReference<ItemMapa>,
+        where(idField, '==', idValue), orderBy(ordem)
+      )
+    )
   }
 }
