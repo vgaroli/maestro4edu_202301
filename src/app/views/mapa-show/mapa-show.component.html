@@ -4,10 +4,15 @@
       <div *ngFor="let sala of salas" class="botao" [innerHTML]="sala.sala" (click)="buscaSala(sala.id)"></div>
     </div>
   </div>
-  <div id="dados-aluno">
+  <div id="dados-aluno" *ngIf="showBoletim; else elseBoletim">
     <ng-container *ngFor="let aluno of alunos">
-      <app-mapa-id></app-mapa-id>
+      <app-mapa-id [idGoogle]="aluno.idGoogle"></app-mapa-id>
+<!--      <div *ngIf="isAluno">
+        Os dados do Google Sala de Aula e do Geekie One estão sendo processados
+      </div>-->
       <app-mapa-list [idCurso]="aluno.idCurso" [idGoogle]="aluno.idGoogle" [idGrade]="aluno.idGrade"></app-mapa-list>
     </ng-container>
   </div>
+  <ng-template #elseBoletim>
+    <div class="aviso"><h2>Os boletins estão sendo conferidos!</h2></div></ng-template>
 </div>

@@ -14,6 +14,7 @@ export class SalasService {
   constructor(private firestore: Firestore, private principal: PrincipalService) { }
 
   listaAlunosBySala(idSala: string): Observable<AlunoSala[]>{
+    //console.log("Entrando listaAlunosBySala")
     let path = `escolas/${this.principal.escola}/anosLetivos/${this.principal.anoLetivo}/alunosSala`
     return collectionData(
       query<AlunoSala>(collection(this.firestore, path) as CollectionReference<AlunoSala>,
@@ -29,5 +30,16 @@ export class SalasService {
       collection(this.firestore, path) as CollectionReference<SalaGrade>,
       where('showBoletim','==', true)), {idField: 'id'})
   }
+
+  listaSalas(): Observable<SalaGrade[]>{
+    let path = `escolas/${this.principal.escola}/anosLetivos/${this.principal.anoLetivo}/salasGrade`
+    return collectionData<SalaGrade>(collection(this.firestore, path) as CollectionReference<SalaGrade>, {idField: 'id'})
+  }
+
+  getMatricula(idGoogle: string):Observable<Matricula>{
+    let path = `escolas/${this.principal.escola}/anosLetivos/${this.principal.anoLetivo}/matriculas`
+    return docData<Matricula>(doc(this.firestore,path,idGoogle) as DocumentReference<Matricula>)
+  }
+
 
 }

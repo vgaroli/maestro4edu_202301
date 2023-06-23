@@ -1,3 +1,4 @@
-<div *ngFor="let item of itens">
-  <app-mapa-item [order]="item.ordem" [idCurso]="idCurso" [idGrade]="idGrade" [colletion]="item.colecao" idField="idGoogle" [idValue]="idGoogle"></app-mapa-item>
+<div class="grid-container-list" [style]="customStyle">
+    <app-mapa-item *ngFor="let item of itens" [order]="item.ordem" [idCurso]="idCurso" [idGrade]="idGrade" [colletion]="item.colecao" [titulo]="item.titulo"
+      idField="idGoogle" [style]="item.estilo" [idValue]="idGoogle"></app-mapa-item>
 </div>

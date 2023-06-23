@@ -17,6 +17,7 @@ export class AppComponent {
   isAutenticado: boolean = false
   escola: string = ""
   photoURL: string = ""
+  sideMenuOpen: boolean = true
   nome: string = ""
   menus: Menu[] = []
   anoLetivo: number = 0
@@ -46,6 +47,7 @@ export class AppComponent {
       this.isAutenticado = true
       this.principal.naoAnonimo = false
       this.showNomeAluno = true
+      this.sideMenuOpen = false
       this.principal.changeData.subscribe(() => {
         this.nome = this.principal.nomePessoa
       })

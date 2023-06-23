@@ -25,6 +25,7 @@ export class PrincipalService {
   avisoBoletim?: string=""
   idCurso: string = ""
   idGoogle: string = ""
+  idGrade: string =""
   idGeekie: string = ""
   conta: string = ""
   photoURL: string = ""
@@ -106,7 +107,7 @@ export class PrincipalService {
             this.conta = state.email
           }
 
-          //this.conta = 'paloma.baptistela@csceducacao.com.br'
+         //this.conta = 'artur.brito@alunosp.colegiomaterdei.net'
           if (!this.accessToken) {
             this.login()
           } else {
@@ -123,6 +124,9 @@ export class PrincipalService {
                 }
                 if (conta.idCurso) {
                   this.idCurso = conta.idCurso
+                }
+                if(conta.idGrade){
+                  this.idGrade = conta.idGrade
                 }
                 this.escola = conta.escola
                 docData<Pessoa>(doc(this.firestore, 'pessoas', conta.pessoa.path.split('/')[1]) as DocumentReference<Pessoa>)

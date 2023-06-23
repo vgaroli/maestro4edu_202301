@@ -1,5 +1,5 @@
 export interface Cabecalho {
-  id: string
+  id?: string
   colunas: number
   cabecalho: DadoItem[]
 }
@@ -13,15 +13,19 @@ export interface DadoItem {
 }
 
 export interface ItemMapa{
-  aluno: string
-  conta: string
-  idDisciplina: string
-  idGoogle: string
-  idSala: string
-  linhaItem: DadoItem[]
-  nomeDisciplina: string
-  nomeSala: string
-  resultado: string
+  aluno?: string
+  conta?: string
+  idDisciplina?: string
+  idGoogle?: string
+  idSala?: string
+  campoId?: string
+  estilo?:string
+  linhaItem?: DadoItem[]
+  nomeDisciplina?: string
+  nomeSala?: string
+  resultado?: string
   ordem?: string
   colecao?:string
+  titulo?:string
+  somenteCoordenacao?:boolean
 }

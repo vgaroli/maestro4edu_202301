@@ -77,6 +77,7 @@ export interface Conta{
   idGeekie?: string
   idCurso?: string
   grade?: string
+  idGrade?: string
   conta: string
   escola: string
   pessoa: DocumentReference
@@ -86,7 +87,7 @@ export interface Conta{
   boletimLiberado?: boolean
   foto?: string
   coordenaSalas?: string[]
-  ultimoUpdateClassroom?: Timestamp 
+  ultimoUpdateClassroom?: Timestamp
 }
 
 export interface Pessoa{
@@ -99,6 +100,7 @@ export interface Pessoa{
 export interface AnonimoData{
   idGoogle: string
   idGeekie?: string
+  idGrade?:string
   idCurso?: string
   uuid: string
   anoLetivo: number

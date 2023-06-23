@@ -17,6 +17,7 @@ export class MapaListService {
 
   getListGrade(idGrade: string):Observable<Grade>{
     let colecao: string = `escolas/${this.principal.escola}/anosLetivos/${this.principal.anoLetivo}/grades`
+    //console.log(colecao)
     return docData<Grade>(doc(this.firestore, colecao, idGrade) as DocumentReference<Grade>)
   }
 
@@ -24,10 +25,13 @@ export class MapaListService {
   {
     let collectionHeader = collection + "Cabecalhos"
     let path = `escolas/${this.principal.escola}/anosLetivos/${this.principal.anoLetivo}/${collectionHeader}`
+    //console.log(path)
+    //console.log(idHeader)
     return docData<Cabecalho>(doc(this.firestore, path, idHeader) as DocumentReference<Cabecalho>)
   }
 
   loadDataItem(dataCollection: string, idField: string, idValue: string, ordem: string):Observable<ItemMapa[]>{
+    //console.log(`Data Item: ${dataCollection} idField: ${idField}  idValue: ${idValue} ordem:${ordem}`)
     let colecao: string = `escolas/${this.principal.escola}/anosLetivos/${this.principal.anoLetivo}/${dataCollection}`
     return collectionData(
       query<ItemMapa>(

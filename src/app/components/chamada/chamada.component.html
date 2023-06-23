@@ -1,0 +1,83 @@
+<div *ngIf="listaChamadas; else chamadaEdit">
+  <mat-form-field appearance="fill" class="example-form-field">
+      <mat-label>Data chamada</mat-label>
+      <input matInput [matDatepicker]="datepicker" (dateChange)="loadChamadas()" [(ngModel)]="dataBusca">
+      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker>
+          <mat-datepicker-actions>
+              <button mat-button matDatepickerCancel>Cancelar</button>
+              <button mat-raised-button color="primary" matDatepickerApply>Aplicar</button>
+          </mat-datepicker-actions>
+      </mat-datepicker>
+  </mat-form-field>
+  <mat-slide-toggle [(ngModel)]="visaoCoordenador" (change)="loadChamadas()" *ngIf="isCoordenador" class="example-margin" color="primary">
+      Visão coordenador
+  </mat-slide-toggle>&nbsp;&nbsp;&nbsp;
+  <mat-slide-toggle [(ngModel)]="registradasUltimo" (change)="ordenar()" class="example-margin" color="primary">
+      Registradas no final
+  </mat-slide-toggle>&nbsp;&nbsp;&nbsp;
+  <mat-slide-toggle [(ngModel)]="chamadasEmAberto" (change)="loadChamadas()" class="example-margin" color="primary">
+      Apenas chamadas em aberto
+  </mat-slide-toggle>
+  <br>
+  <div class="container">
+      <div class="itemFlex" *ngFor="let chamada of chamadas" (click)="abrirChamada(chamada)">
+          <div class="containerGrid" [style]="chamada.style">
+              <div style="width:250px">
+                  {{chamada.dataHoraInicio.toMillis() | date:'dd/MM/yyyy' }} - {{chamada.dataHoraInicio.toMillis() | date:'HH:mm'}} - {{chamada.sala}} <br>
+                  {{chamada.disciplina}}<br>
+                  {{chamada.docente}}
+              </div>
+              <div style="padding-left: 10px; border-left:1px solid;">
+                  ausentes: {{chamada.ausentes}}
+              </div>
+          </div>
+      </div>
+  </div>
+  <button style="display:none" mat-raised-button color="primary" (click)="iniciarRegistro()">Iniciar outra chamada</button>
+</div>
+<ng-template #chamadaEdit>
+  <mat-form-field appearance="fill">
+      <mat-label>Data início</mat-label>
+      <input disabled="disabled" matInput [matDatepicker]="dtInicio" [(ngModel)]="dataInicio" (ngModelChange)="changeInicio()">
+      <mat-datepicker-toggle matSuffix [for]="dtInicio"></mat-datepicker-toggle>
+      <mat-datepicker #dtInicio></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+      <mat-label>Hora início</mat-label>
+      <mat-select disabled="disabled" [(ngModel)]="selectedHoraInicio" (ngModelChange)="checkDados()" name="horaInicio">
+          <mat-option *ngFor="let hora of horas" [value]="hora.idHoraInicio">
+              {{hora.idHoraInicio.toDate() | date:"HH:mm"}}
+          </mat-option>
+      </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+      <mat-label>Selecione a sala</mat-label>
+      <mat-select disabled="disabled" [(ngModel)]="selectedSala" name="sala" (valueChange)=loadAlunosSala($event)>
+          <mat-option *ngFor="let sala of salas" [value]="sala.id">
+              {{sala.sala}}
+          </mat-option>
+      </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+      <mat-label>Selecione a discipina</mat-label>
+      <mat-select disabled="disabled" [(ngModel)]="selectedDisciplina" (ngModelChange)="checkDados()" name="disciplina">
+          <mat-option *ngFor="let disciplina of disciplinas" [value]="disciplina.id">
+              {{disciplina.nome}}
+          </mat-option>
+      </mat-select>
+  </mat-form-field>
+  <br>
+  <button mat-raised-button color="primary" [disabled]="naoRegistra" (click)="registrar()">Registrar</button>&nbsp;&nbsp;
+  <button mat-raised-button color="primary" (click)="cancelar()">Cancelar</button>
+  <span class="registro" *ngIf="chamadaRegistrada">Chamada Registrada</span>
+  <mat-selection-list #alunosSelect>
+      <mat-list-option *ngFor="let aluno of alunos" [value]="aluno.idGoogle" [(selected)]="aluno.presente"
+          checkboxPosition="before">
+          {{aluno.nomeAluno}}
+      </mat-list-option>
+  </mat-selection-list>
+</ng-template>

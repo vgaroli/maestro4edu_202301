@@ -1,5 +1,5 @@
 <mat-sidenav-container *ngIf="isAutenticado; else loginBlock" class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" mode="side" opened="true">
+  <mat-sidenav #drawer class="sidenav" mode="side" [opened]="sideMenuOpen">
     <mat-toolbar>
       <img class="tool" src="../assets/icons/maestro4edu_logo80.png" alt="maestro4edu">
     </mat-toolbar>
@@ -7,9 +7,9 @@
       <a mat-list-item routerLink="inicial" (click)="drawer.close()">
         <mat-icon aria-label="side nav toggle ico">home</mat-icon>Início
       </a>
-      <a mat-list-item routerLink="mapa-estudante-show" (click)="drawer.close()">
+<!--      <a mat-list-item routerLink="mapa-estudante-show" (click)="drawer.close()">
         <mat-icon aria-label="side nav toggle ico">description</mat-icon>Mapa
-      </a>
+      </a>-->
       <a *ngFor="let menu of menus" mat-list-item routerLink="/{{menu.routerLink}}" (click)="drawer.close()">
         <mat-icon aria-label="Side nav toggle icon">{{menu.icone}}</mat-icon>{{menu.texto}}
       </a>
