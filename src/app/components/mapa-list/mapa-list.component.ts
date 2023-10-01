@@ -22,8 +22,8 @@ export class MapaListComponent implements OnInit {
   ngOnInit(): void {
     this.mapaService.getListGrade(this.idGrade).subscribe(grade => {
       this.itens = grade.itensMapa
-      let novoItem:ItemMapa={campoId: "idGoogle", colecao:"ciclosAvaliacao", ordem:"nomeDisciplina", titulo: "Ciclo Avaliação"}
-      this.itens.push(novoItem)
+      //let novoItem:ItemMapa={campoId: "idGoogle", colecao:"ciclosAvaliacao", ordem:"nomeDisciplina", titulo: "Ciclo Avaliação"}
+      //this.itens.push(novoItem)
       this.colunasGrid = grade.colunasMapa
       this.customStyle = `grid-template-columns: repeat(${this.colunasGrid}, auto)`
       this.changeDetection.detectChanges()

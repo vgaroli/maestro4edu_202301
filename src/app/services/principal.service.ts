@@ -107,7 +107,7 @@ export class PrincipalService {
             this.conta = state.email
           }
 
-         //this.conta = 'artur.brito@alunosp.colegiomaterdei.net'
+         //this.conta = 'theodore.xerfan@alunosp.colegiomaterdei.net'
           if (!this.accessToken) {
             this.login()
           } else {

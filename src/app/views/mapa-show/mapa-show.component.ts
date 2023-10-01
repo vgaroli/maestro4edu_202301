@@ -76,9 +76,10 @@ export class MapaShowComponent implements OnInit {
         if (dados) {
           console.log(dados)
           this.principal.getShowBoletimForAnonimo(dados[0].escola).subscribe(dado => {
-            this.showBoletimAnonimo = dado.showBoletim
+            //this.showBoletimAnonimo = dado.showBoletim
             this.showNome = !this.showBoletimAnonimo
-            this.showBoletimAnonimo = true
+            this.showBoletimAnonimo = true && dado.showBoletim
+            this.showBoletim = dado.showBoletim
           })
           this.principal.escola = dados[0].escola
           this.principal.anoLetivo =dados[0].anoLetivo
@@ -94,7 +95,7 @@ export class MapaShowComponent implements OnInit {
           this.principal.mudouDados()
           this.isAluno = true
           this.isCoordenador = false
-          this.showBoletim = true
+          //this.showBoletim = true
           this.loadSalas()
         }
       })
